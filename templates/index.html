@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sorting Night</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">⇅</div>
+        <div>
+          <div class="title">Sorting Night</div>
+          <div class="subtitle" id="subtitle">TV-friendly sorting game</div>
+        </div>
+      </div>
+
+      <div class="scoreboard">
+        <div class="team" id="teamABox">
+          <div class="teamName" id="teamAName">Team A</div>
+          <div class="teamScore" id="teamAScore">0</div>
+        </div>
+        <div class="mid">
+          <div class="pill" id="targetWinsPill">First to 5</div>
+          <div class="turn">
+            <span id="turnLabel">Turn:</span>
+            <span class="turnTeam" id="turnTeam">—</span>
+          </div>
+        </div>
+        <div class="team" id="teamBBox">
+          <div class="teamName" id="teamBName">Team B</div>
+          <div class="teamScore" id="teamBScore">0</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SETUP -->
+    <section class="card" id="setupCard">
+      <h2>Setup</h2>
+      <div class="grid2">
+        <label>
+          Team A name
+          <input id="teamAInput" value="Team A" />
+        </label>
+        <label>
+          Team B name
+          <input id="teamBInput" value="Team B" />
+        </label>
+        <label>
+          Target wins
+          <select id="targetWinsSelect">
+            <option value="4">First to 4 (best of 7)</option>
+            <option value="5" selected>First to 5 (best of 9)</option>
+          </select>
+        </label>
+        <label>
+          Turn time limit
+          <select id="turnSecondsSelect">
+            <option value="60" selected>60 seconds</option>
+            <option value="45">45 seconds</option>
+            <option value="30">30 seconds</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <button class="btn primary" id="startGameBtn">Start game</button>
+        <button class="btn" id="demoRoundBtn">Jump into a round</button>
+      </div>
+
+      <p class="hint">
+        Each round has N items. Teams correctly place N−1 into the sorted list. One item will always remain unused.
+        Wrong placement or timeout gives the other team a point.
+      </p>
+    </section>
+
+    <!-- GAME -->
+    <main class="game hidden" id="gameArea">
+      <section class="card">
+        <div class="roundHeader">
+          <div>
+            <div class="kicker" id="roundKicker">Round 1</div>
+            <h2 id="questionTitle">—</h2>
+            <div class="prompt" id="questionPrompt">—</div>
+          </div>
+          <div class="timerBox">
+            <div class="timerLabel">Time left</div>
+            <div class="timer" id="timer">60</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="board">
+        <div class="panel card">
+          <h3>Remaining answers</h3>
+          <div class="pool" id="pool"></div>
+
+          <div class="controls">
+            <label>
+              Pick an answer
+              <select id="pickSelect"></select>
+            </label>
+
+            <label>
+              Insert position
+              <select id="posSelect"></select>
+            </label>
+
+            <button class="btn primary" id="placeBtn">Place</button>
+            <button class="btn danger" id="endRoundBtn" title="Force end round">End round</button>
+          </div>
+
+          <div class="status" id="status"></div>
+        </div>
+
+        <div class="panel card">
+          <h3>Sorted list</h3>
+          <div class="sorted" id="sorted"></div>
+          <div class="sortedHint" id="sortedHint"></div>
+        </div>
+      </section>
+
+      <!-- ROUND RESOLUTION MODAL -->
+      <div class="modal hidden" id="modal">
+        <div class="modalInner card">
+          <div class="modalTop">
+            <h2 id="modalTitle">Round over</h2>
+            <div class="pill" id="modalPill">—</div>
+          </div>
+          <div id="modalBody"></div>
+          <div class="row">
+            <button class="btn primary" id="nextRoundBtn">Next round</button>
+            <button class="btn" id="restartBtn">Restart game</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/game.js"></script>
+</body>
+</html>
