@@ -206,6 +206,23 @@ function positionRailButtons(){
   renderPositionButtonsEnabled();
 }
 
+function adjustCenterCardHeight(){
+  const center = document.querySelector(".centerCard");
+  const wrap = document.querySelector(".sortedWrap");
+  const list = $("sortedList");
+  if(!center || !wrap || !list) return;
+
+  // Measure actual list height
+  const listHeight = list.scrollHeight;
+
+  // Add extra space for topDir + bottomDir + status + some breathing room
+  const extra = 52 + 92 + 40; // match padding-top + padding-bottom + buffer
+  const desired = listHeight + extra;
+
+  // Only grow; keep baseline minimum
+  const baseline = 520;
+  center.style.minHeight = `${Math.max(baseline, desired)}px`;
+}
 
 function renderSortedList(){
   const q = state.q;
@@ -237,7 +254,10 @@ function renderSortedList(){
   });
 
   // After the DOM paints, position the rail buttons between items
-  requestAnimationFrame(() => positionRailButtons());
+  requestAnimationFrame(() => {
+    positionRailButtons();
+    adjustCenterCardHeight();
+  });
 
   renderPositionButtonsEnabled();
 }
@@ -435,6 +455,7 @@ function startRound(q){
   setStatus("Select an answer, then choose its position.", "");
   resetTurnTimer();
   startTimer();
+  adjustCenterCardHeight();
 }
 
 function startNextRound(){

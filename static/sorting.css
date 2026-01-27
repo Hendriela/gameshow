@@ -49,10 +49,20 @@
 
 .centerCard{
   position:relative;
-  min-height:420px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  overflow:hidden;
+
+  /* ✅ let it grow */
+  min-height: 520px;           /* baseline: looks good even with few items */
+  height: auto;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;  /* list starts below top label */
+
+  padding-top: 52px;           /* space for topDir */
+  padding-bottom: 92px;        /* space for bottomDir + status */
 }
+
 .direction{
   position:absolute;left:16px;right:16px;
   display:flex;justify-content:center;
