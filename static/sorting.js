@@ -92,7 +92,7 @@ function nextTeam(){
 
 function setDirectionLabels(){
   const labels = (state.q && state.q.labels) ? state.q.labels : { more: "more", less: "less" };
-  
+
   if(state.q.direction === "desc"){
     $("topDir").textContent = `${labels.more} ↑`;
     $("bottomDir").textContent = `${labels.less} ↓`;
@@ -362,26 +362,6 @@ function endRound({reason, message, pointTo, wrongPick=null, wrongLabel=null}){
        ${item.label} (${formatValue(q,item)}) at position <b>${wrongLabel}</b>`;
     body.appendChild(p);
   }
-
-  const h = document.createElement("h3");
-  h.style.marginTop = "12px";
-  h.textContent = "Correct order";
-  body.appendChild(h);
-
-  const table = document.createElement("table");
-  const thead = document.createElement("thead");
-  thead.innerHTML = `<tr><th>#</th><th>Item</th><th>${q.criterion}</th></tr>`;
-  table.appendChild(thead);
-
-  const tbody = document.createElement("tbody");
-  correct.forEach((id, idx) => {
-    const item = byId(q,id);
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${idx+1}</td><td>${item.label}</td><td>${formatValue(q,item)}</td>`;
-    tbody.appendChild(tr);
-  });
-  table.appendChild(tbody);
-  body.appendChild(table);
 
   const resultsBody = $("resultsBody");
   resultsBody.innerHTML = "";
