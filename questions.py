@@ -1,9 +1,10 @@
-QUESTIONS = [
+SORTING_QUESTIONS = [
     {
         "id": "mountains_height",
         "title": "Mountains & Peaks",
         "prompt": "Sort these by height above mean sea level, from high (top) to low (bottom).",
         "criterion": "Height (m)",
+        "labels": {"more": "taller", "less": "shorter"},
         "direction": "desc",
         "start_id": "kilimanjaro",
         "items": [
@@ -46,6 +47,7 @@ QUESTIONS = [
         "prompt": "Sort these movies by release year, from oldest to newest.",
         "criterion": "Release year",
         "direction": "asc",
+        "labels": {"more": "later", "less": "earlier"},
         "start_id": "matrix",
         "items": [
             {"id": "godfather", "label": "The Godfather", "value": 1972, "unit": ""},
@@ -60,3 +62,8 @@ QUESTIONS = [
         ],
     },
 ]
+
+
+QUESTIONS_BY_MODE = {
+    "sorting": SORTING_QUESTIONS,
+}

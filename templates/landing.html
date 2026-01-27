@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ app_title }}</title>
+  <link rel="stylesheet" href="/static/base.css" />
+  <link rel="stylesheet" href="/static/landing.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">🎮</div>
+        <div>
+          <div class="title">{{ app_title }}</div>
+          <div class="sub">Choose a game mode</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <a class="card" href="/sorting">
+        <div class="cardTitle">Sorting Game</div>
+        <div class="cardSub">Alternate turns, place items into the correct order.</div>
+        <div class="cardHint">Click to start →</div>
+      </a>
+
+      <div class="card disabled">
+        <div class="cardTitle">More modes (soon)</div>
+        <div class="cardSub">This landing page is ready for future games.</div>
+        <div class="cardHint">Not implemented</div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+.top{display:flex;align-items:center;justify-content:space-between;padding:8px 4px 16px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{
+  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+  background: linear-gradient(135deg, rgba(122,162,255,.35), rgba(78,226,160,.25));
+  box-shadow: var(--shadow);
+}
+.title{font-weight:900;font-size:18px}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{
+  min-height:140px;
+  display:flex;flex-direction:column;gap:10px;
+  transition: transform .12s ease, background .2s ease;
+}
+.card:hover{transform: translateY(-2px)}
+.card.disabled{opacity:.6;cursor:not-allowed}
+.cardTitle{font-weight:900;font-size:18px}
+.cardSub{color:var(--muted);line-height:1.35}
+.cardHint{margin-top:auto;color:var(--muted);font-size:12px}

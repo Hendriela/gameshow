@@ -1,0 +1,195 @@
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding: 6px 2px 14px;
+}
+.back{color:var(--muted);font-size:12px;padding:8px 10px;border-radius:12px;
+  border:1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.12);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+  background: linear-gradient(135deg, rgba(122,162,255,.35), rgba(78,226,160,.25));
+  box-shadow: var(--shadow);
+  font-size:22px;
+}
+.title{font-weight:900;font-size:18px}
+.sub{color:var(--muted);font-size:12px;margin-top:2px}
+
+.score{display:flex;align-items:center;gap:10px}
+.team{
+  min-width:130px;
+  padding:10px 12px;border-radius: 14px;
+  background: rgba(15,23,48,.7);
+  border:1px solid rgba(255,255,255,.08);
+}
+.team.active{
+  outline: 2px solid rgba(122,162,255,.7);
+  background: rgba(122,162,255,.12);
+}
+.teamName{color:var(--muted);font-size:12px}
+.teamScore{font-size:24px;font-weight:900;margin-top:3px}
+.mid{display:flex;flex-direction:column;gap:6px;align-items:center}
+.turn{font-size:12px;color:var(--muted)}
+
+.stage{display:grid;grid-template-rows:auto 1fr auto;gap:16px}
+
+.headerCard{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.round{color:var(--muted);font-size:12px}
+.qTitle{font-weight:900;font-size:18px;margin-top:4px}
+.qPrompt{color:var(--text);opacity:.95;line-height:1.35;margin-top:4px}
+
+.timerBox{
+  min-width:120px;text-align:center;padding:10px 12px;border-radius: 16px;
+  background: rgba(15,23,48,.75);
+  border:1px solid rgba(255,255,255,.10);
+}
+.timerLabel{color:var(--muted);font-size:12px}
+.timer{font-size:34px;font-weight:900;margin-top:6px}
+.timer.low{color: var(--bad)}
+
+.centerCard{
+  position:relative;
+  min-height:420px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.direction{
+  position:absolute;left:16px;right:16px;
+  display:flex;justify-content:center;
+  color:var(--muted);font-weight:800;letter-spacing:.3px;
+  text-transform:uppercase;font-size:12px;
+}
+.topDir{top:12px}
+.bottomDir{bottom:54px}
+
+.sortedWrap{width:min(680px, 92%);}
+.sortedList{
+  display:flex;flex-direction:column;gap:10px;
+}
+
+.sortedRow{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.sortedItem{
+  flex:1;
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(15,23,48,.75);
+  padding: 12px 14px;
+  display:flex;justify-content:space-between;align-items:center;
+  transform-origin: top center;
+}
+.itemLabel{font-weight:900}
+.itemValue{
+  color:var(--muted);
+  font-size:12px;
+  margin-left:10px;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.centerCard.revealValues .itemValue{
+  opacity: 1;
+}
+
+.posBtn{
+  width:42px;height:42px;margin-left:10px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  font-weight:900;
+  cursor:pointer;
+  transition: transform .08s ease, background .18s ease;
+}
+.posBtn:hover{background: rgba(255,255,255,.10)}
+.posBtn:active{transform: translateY(1px) scale(.99)}
+.posBtn.disabled{opacity:.4;cursor:not-allowed}
+
+@keyframes enter{
+  from{transform: translateY(-8px) scale(.985); opacity:.0}
+  to{transform: translateY(0) scale(1); opacity:1}
+}
+.enter{animation: enter .22s ease}
+
+.status{
+  position:absolute;bottom:14px;left:16px;right:16px;
+  text-align:center;color:var(--muted);font-size:12px;min-height:20px;
+}
+.status.good{color:var(--good)}
+.status.bad{color:var(--bad)}
+
+.bottomCard{}
+.bottomHeader{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.choicesTitle{font-weight:900}
+.hint{color:var(--muted);font-size:12px}
+
+.choices{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px}
+.choice{
+  color: var(--text);
+  padding:10px 12px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.16);
+  font-size:13px;
+  cursor:pointer;
+  transition: transform .08s ease, background .18s ease, outline .18s ease;
+}
+.choice:hover{background: rgba(255,255,255,.10)}
+.choice.selected{
+  outline: 2px solid rgba(122,162,255,.75);
+  background: rgba(122,162,255,.14);
+}
+.choice.disabled{opacity:.4;cursor:not-allowed}
+
+.modal{
+  position:fixed;inset:0;
+  background: rgba(0,0,0,.55);
+  display:flex;align-items:center;justify-content:center;
+  padding: 22px;
+}
+.modalInner{max-width:920px;width:100%}
+.modalTop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.modalTitle{font-weight:1000;font-size:18px}
+.modalSub{color:var(--muted);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;font-size:13px}
+th{color:var(--muted);font-weight:900}
+
+/* Ensure hidden overrides .modal { display:flex } */
+.modal.hidden { display: none; }
+
+.resultsCard{
+  margin-top: 0;
+}
+
+.resultsTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:10px;
+}
+.resultsTitle{font-weight:1000;font-size:16px}
+.resultsSub{color:var(--muted);font-size:12px;margin-top:4px}
+
+.sortedWrap{
+  width:min(680px, 92%);
+  position: relative;             /* ✅ anchor for rail */
+}
+
+/* PosRail contains the position buttons */
+.posRail{
+  position:absolute;
+  right: -56px;                   /* move buttons to the right of list */
+  top: 0;
+  width: 50px;
+  height: 100%;
+  pointer-events: none;           /* allow buttons only (we'll re-enable per button) */
+}
+
+.posRail .posBtn{
+  position:absolute;
+  right: 0;
+  pointer-events: auto;           /* ✅ buttons clickable */
+}

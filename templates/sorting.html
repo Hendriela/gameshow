@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ app_title }} — Sorting</title>
+  <link rel="stylesheet" href="/static/base.css" />
+  <link rel="stylesheet" href="/static/sorting.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="back" href="/">← Modes</a>
+
+      <div class="brand">
+        <div class="logo">⇅</div>
+        <div>
+          <div class="title">Sorting Game</div>
+          <div class="sub" id="subtitle">Click an answer, then click a position.</div>
+        </div>
+      </div>
+
+      <div class="score">
+        <div class="team" id="teamABox">
+          <div class="teamName">{{ team_a }}</div>
+          <div class="teamScore" id="teamAScore">0</div>
+        </div>
+        <div class="mid">
+          <div class="pill">First to {{ target_wins }}</div>
+          <div class="turn">Turn: <span id="turnTeam">—</span></div>
+        </div>
+        <div class="team" id="teamBBox">
+          <div class="teamName">{{ team_b }}</div>
+          <div class="teamScore" id="teamBScore">0</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="stage">
+      <!-- Question header -->
+      <section class="card headerCard">
+        <div class="headerLeft">
+          <div class="round" id="roundLabel">Round 1</div>
+          <div class="qTitle" id="qTitle">—</div>
+          <div class="qPrompt" id="qPrompt">—</div>
+        </div>
+        <div class="timerBox">
+          <div class="timerLabel">Time left</div>
+          <div class="timer" id="timer">60</div>
+        </div>
+      </section>
+
+      <!-- Central sorted list -->
+      <section class="card centerCard">
+        <div class="direction topDir" id="topDir">—</div>
+
+        <div class="sortedWrap">
+            <div class="sortedList" id="sortedList"></div>
+            <div class="posRail" id="posRail"></div>
+        </div>
+
+        </div>
+
+        <div class="direction bottomDir" id="bottomDir">—</div>
+
+        <div class="status" id="status"></div>
+      </section>
+
+      <!-- Bottom choices -->
+      <section class="card bottomCard">
+        <div class="bottomHeader">
+          <div class="choicesTitle">Available choices (shuffled)</div>
+          <div class="hint">Select one, then choose its position (1..N+1) on the list.</div>
+        </div>
+        <div class="choices" id="choices"></div>
+      </section>
+
+      <section class="card resultsCard" id="resultsCard">
+        <div class="resultsTop">
+            <div>
+            <div class="resultsTitle" id="resultsTitle">—</div>
+            <div class="resultsSub" id="resultsSub">—</div>
+            </div>
+            <div class="pill" id="resultsPill">—</div>
+        </div>
+
+        <div id="resultsBody"></div>
+
+        <div class="row">
+            <button class="btn primary" id="nextRoundBtn" disabled>Next round</button>
+            <button class="btn" id="restartBtn">Restart game</button>
+        </div>
+        </section>
+    </main>
+  </div>
+
+  <script>
+    // injected “code config” (no config UI)
+    window.GAME_CFG = {
+      teamA: {{ team_a|tojson }},
+      teamB: {{ team_b|tojson }},
+      targetWins: {{ target_wins|int }},
+      turnSeconds: {{ turn_seconds|int }}
+    };
+  </script>
+  <script src="/static/sorting.js"></script>
+</body>
+</html>
