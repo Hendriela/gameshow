@@ -15,6 +15,7 @@ let state = {
   secondsLeft: CFG.turnSeconds,
   timer: null,
   roundOver: false,
+  isPaused: true,
 };
 
 function teamName(code){ return code === "A" ? CFG.teamA : CFG.teamB; }
@@ -56,6 +57,20 @@ function updateScoreboard(){
   $("teamBBox").classList.toggle("active", state.team === "B");
 }
 
+function resetTurnTimer(){
+  state.secondsLeft = CFG.turnSeconds;
+  renderTimer();
+  state.isPaused = false;
+  updatePauseButton();
+}
+
+function updatePauseButton(){
+  const btn = $("pauseBtn");
+  if(!btn) return;
+  btn.textContent = state.isPaused ? "Resume" : "Pause";
+  btn.classList.toggle("paused", state.isPaused);
+}
+
 function stopTimer(){
   if(state.timer){ clearInterval(state.timer); state.timer = null; }
 }
@@ -68,11 +83,17 @@ function renderTimer(){
 
 function startTimer(){
   stopTimer();
-  state.secondsLeft = CFG.turnSeconds;
-  renderTimer();
+  state.isPaused = false;
+  updatePauseButton();
+
+  // Don't reset seconds here if you want to preserve remaining time across pauses.
+  // We DO reset at the start of each turn via resetTurnTimer().
   state.timer = setInterval(() => {
+    if(state.isPaused || state.roundOver) return;
+
     state.secondsLeft -= 1;
     renderTimer();
+
     if(state.secondsLeft <= 0){
       const loser = state.team;
       const winner = loser === "A" ? "B" : "A";
@@ -84,6 +105,7 @@ function startTimer(){
     }
   }, 1000);
 }
+
 
 function nextTeam(){
   state.team = state.team === "A" ? "B" : "A";
@@ -325,6 +347,8 @@ function autoCompleteToCorrect(){
 }
 
 function endRound({reason, message, pointTo, wrongPick=null, wrongLabel=null}){
+  state.isPaused = false;
+  updatePauseButton();
   state.roundOver = true;
   stopTimer();
 
@@ -409,6 +433,7 @@ function startRound(q){
   renderSortedList();
   renderChoices();
   setStatus("Select an answer, then choose its position.", "");
+  resetTurnTimer();
   startTimer();
 }
 
@@ -446,6 +471,14 @@ async function init(){
       setStatus("Selection cleared.", "");
     }
   });
+
+  // Hook pause button
+  $("pauseBtn").onclick = () => {
+  if(state.roundOver) return;
+  state.isPaused = !state.isPaused;
+  updatePauseButton();
+  setStatus(state.isPaused ? "Paused ⏸" : "Resumed ▶", "");
+};
 
   startRound(QUESTIONS[0]);
 }

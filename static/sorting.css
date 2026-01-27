@@ -193,3 +193,13 @@ th{color:var(--muted);font-weight:900}
   right: 0;
   pointer-events: auto;           /* ✅ buttons clickable */
 }
+
+.timerBox .btn.pause{
+  margin-top: 10px;
+  width: 100%;
+  background: rgba(255,255,255,.10);
+}
+.timerBox .btn.pause.paused{
+  background: rgba(122,162,255,.18);
+  border: 1px solid rgba(122,162,255,.35);
+}
