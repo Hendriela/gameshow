@@ -36,7 +36,7 @@
 .headerCard{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
 .round{color:var(--muted);font-size:12px}
 .qTitle{font-weight:900;font-size:18px;margin-top:4px}
-.qPrompt{color:var(--text);opacity:.95;line-height:1.35;margin-top:4px}
+.qPrompt{color:var(--text);line-height:1.35;margin-top:10px;font-size:18px;}
 
 .timerBox{
   min-width:120px;text-align:center;padding:10px 12px;border-radius: 16px;
@@ -141,7 +141,7 @@
   padding:10px 12px;border-radius:999px;
   border:1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.16);
-  font-size:13px;
+  font-size:25px;
   cursor:pointer;
   transition: transform .08s ease, background .18s ease, outline .18s ease;
 }
