@@ -38,8 +38,9 @@ function computeCorrectOrder(q){
 }
 
 function formatValue(q, item){
-  const unit = q.unit ? ` ${q.unit}` : "";
-  return `${item.value}${unit}`;
+  const unit = (item.unit !== undefined && item.unit !== null) ? item.unit : (q.unit || "");
+  const u = unit ? ` ${unit}` : "";
+  return `${item.value}${u}`;
 }
 
 function setStatus(msg, kind=""){
