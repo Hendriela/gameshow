@@ -235,6 +235,7 @@ function renderSortedList(){
   // Render sorted items (no position buttons on rows)
   state.sortedIds.forEach((id) => {
     const item = byId(q, id);
+    console.log(item)
 
     const card = document.createElement("div");
     card.className = "sortedItem";
