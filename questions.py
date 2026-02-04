@@ -125,27 +125,7 @@ SORTING_QUESTIONS = [
             {"id": "citroen", "label": "Citroen", "value": 2746, "unit": ""},
         ],
     },
-
-    {
-        "id": "mountains_height",
-        "title": "Mountains & Peaks",
-        "prompt": "Sort these peaks by height above mean sea level, from high (top) to low (bottom).",
-        "criterion": "Height (m)",
-        "labels": {"more": "taller", "less": "shorter"},
-        "direction": "desc",
-        "start_id": "kilimanjaro",
-        "items": [
-            {"id": "annapurna", "label": "Annapurna", "value": 8091, "unit": "m"},
-            {"id": "kilimanjaro", "label": "Mount Kilimanjaro", "value": 5895, "unit": "m"},
-            {"id": "matterhorn", "label": "Matterhorn", "value": 4478, "unit": "m"},
-            {"id": "maunakea", "label": "Mauna Kea", "value": 4207, "unit": "m"},
-            {"id": "fuji", "label": "Mount Fuji", "value": 3776, "unit": "m"},
-            {"id": "vesuvius", "label": "Mount Vesuvius", "value": 1281, "unit": "m"},
-            {"id": "templemount", "label": "Vatican Hill", "value": 76, "unit": "m"},
-            {"id": "sugarloaf", "label": "Sugarloaf Mountain", "value": 396, "unit": "m"},
-        ],
-    },
-
+    
     {
         "id": "movies_oscar",
         "title": "Movies",
@@ -166,6 +146,26 @@ SORTING_QUESTIONS = [
             {"id": "benhur", "label": "Ben Hur", "value": 1959, "unit": ""},
         ],
     },
+
+    {
+        "id": "mountains_prominence",
+        "title": "Peak Prominence",
+        "prompt": "Sort these peaks by prominence (height above saddle to a higher peak on the same landmass), from high (top) to low (bottom).",
+        "criterion": "Prominence (m)",
+        "labels": {"more": "taller", "less": "shorter"},
+        "direction": "desc",
+        "start_id": "kilimanjaro",
+        "items": [
+            {"id": "kilimanjaro", "label": "Mount Kilimanjaro", "value": 5895, "unit": "m"},
+            {"id": "maunakea", "label": "Mauna Kea", "value": 4207, "unit": "m"},
+            {"id": "k2", "label": "K2", "value": 4020, "unit": "m"},
+            {"id": "fuji", "label": "Mount Fuji", "value": 3776, "unit": "m"},
+            {"id": "zugspitze", "label": "Zugspitze", "value": 1746, "unit": "m"},
+            {"id": "vesuvius", "label": "Mount Vesuvius", "value": 1232, "unit": "m"},
+            {"id": "matterhorn", "label": "Matterhorn", "value": 1040, "unit": "m"},
+            {"id": "sugarloaf", "label": "Sugarloaf Mountain", "value": 396, "unit": "m"},
+        ],
+    }
 ]
 
 
